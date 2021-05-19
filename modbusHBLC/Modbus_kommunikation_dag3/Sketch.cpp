@@ -23,38 +23,38 @@ uint16_t ModRTU_CRC(unsigned char buf[], int len);
 #define PayloadLength3	0x03	// PayloadLength3 when setting one parameter of two bytes
 
 // Message type for HBLC settings for
-#define SetVal						0x00	// Set Val
-#define PBand						0x01	// P-Band
-#define AlarmSet					0x02	// Alarm Set
-#define AlarmHysterese					0x03	// Alarm Hysterese
-#define AlarmDelay					0x04	// Alarm Delay
-#define FilterFunction					0x05	// Filter Function
-#define CalFunction					0x06	// Cal Function (Zero & Span cal. function)
-#define NONCAlarm					0x07	// NO NC Alarm
-#define RunIn						0x0A	// Run In
-#define ControlLevel					0x0B	// Control/Level mode
-#define HiLoAlarm					0x0C	// Hi Lo Alarm
-#define LPHPMode					0x0D	// LP HP Mode
-#define LEDShift					0x12	// LED Shift
-#define HBLC_settings					0x21	// HBLC_setting with payload 0x01 return all the HBLC_settings. Register number 0x21
-#define ZeroCali					0x31	// Zero Calibration
-#define SpanCali					0x32	// Span Calibration
-//#define RefrigerantDef				0x34	// Refrigerant (define) - Should you be able to write to this one?
-#define MeasurementLength				0x35	// Measurement Length (same as Sensor Length)
-#define RampeFunction					0x36	// Rampe Function
-#define ValveFilter					0x38	// Valve Filter (Valve speed open % in second)
-#define ValveCloseFilterDef				0x3B	// Valve Close Filter (define) (Valve speed close % in second)
-//#define StandPipe					0x3C	// StandPipe - Should you be able to write to this one?
-#define OffsetLengthDef					0x3D	// Offset Length (define)
-#define MinValveOpenDef					0x3E	// MinValveOpen (define)
-#define AnalogDigitalAlarmSettingDef			0x3F	// Analog Digital Alarm Setting (define)
-#define MaxValveOpenDef					0x40	// Max Valve Open (define)
-#define OffsetMinimumLengthDef				0x41	// Offset Minimum Length (define)
-#define WorkingTemperatureDef				0x42	// Working Temperature (define)
-#define SetAnalogOrDigitalOutputDef			0x44	// Set Analog Or Digital Output (define)
-#define valveOpeningDegreeDef				0x45	// Valve Opening Degree (define)
-#define AnalogDigitalHystSettingDef			0x47	// Analog Digital Hyst Setting (define)
-//#define SensorTypeDef					0x4A	// Sensor Type - Should you be able to write to this one?
+#define SetVal				0x00	// Set Val
+#define PBand				0x01	// P-Band
+#define AlarmSet			0x02	// Alarm Set
+#define AlarmHysterese			0x03	// Alarm Hysterese
+#define AlarmDelay			0x04	// Alarm Delay
+#define FilterFunction			0x05	// Filter Function
+#define CalFunction			0x06	// Cal Function (Zero & Span cal. function)
+#define NONCAlarm			0x07	// NO NC Alarm
+#define RunIn				0x0A	// Run In
+#define ControlLevel			0x0B	// Control/Level mode
+#define HiLoAlarm			0x0C	// Hi Lo Alarm
+#define LPHPMode			0x0D	// LP HP Mode
+#define LEDShift			0x12	// LED Shift
+#define HBLC_settings			0x21	// HBLC_setting with payload 0x01 return all the HBLC_settings. Register number 0x21
+#define ZeroCali			0x31	// Zero Calibration
+#define SpanCali			0x32	// Span Calibration
+//#define RefrigerantDef		0x34	// Refrigerant (define) - Should you be able to write to this one?
+#define MeasurementLength		0x35	// Measurement Length (same as Sensor Length)
+#define RampeFunction			0x36	// Rampe Function
+#define ValveFilter			0x38	// Valve Filter (Valve speed open % in second)
+#define ValveCloseFilterDef		0x3B	// Valve Close Filter (define) (Valve speed close % in second)
+//#define StandPipe			0x3C	// StandPipe - Should you be able to write to this one?
+#define OffsetLengthDef			0x3D	// Offset Length (define)
+#define MinValveOpenDef			0x3E	// MinValveOpen (define)
+#define AnalogDigitalAlarmSettingDef	0x3F	// Analog Digital Alarm Setting (define)
+#define MaxValveOpenDef			0x40	// Max Valve Open (define)
+#define OffsetMinimumLengthDef		0x41	// Offset Minimum Length (define)
+#define WorkingTemperatureDef		0x42	// Working Temperature (define)
+#define SetAnalogOrDigitalOutputDef	0x44	// Set Analog Or Digital Output (define)
+#define valveOpeningDegreeDef		0x45	// Valve Opening Degree (define)
+#define AnalogDigitalHystSettingDef	0x47	// Analog Digital Hyst Setting (define)
+//#define SensorTypeDef			0x4A	// Sensor Type - Should you be able to write to this one?
 
 #define rxPin PD7				// rxPin for SoftwareSerial // 11 or PD7 or just 7
 #define txPin PD7				// txPin for SoftwareSerial
@@ -68,21 +68,21 @@ uint16_t ModRTU_CRC(unsigned char buf[], int len);
 #define S_RX_BUFFER_SIZE  256	// Receiver buffer of 256 bytes
 
 // Modbus functions
-#define ReadCoilStatus			0x01
-#define ReadInputStatus			0x02
-#define ReadHoldingRegisters		0x03
-#define ReadInputRegisters		0x04
-#define WriteSingleCoil			0x05
-#define WriteSingleRegister		0x06
-#define WriteMultipleCoils		0x15
-#define WriteMultipleRegisters		0x16
+#define ReadCoilStatus		0x01
+#define ReadInputStatus		0x02
+#define ReadHoldingRegisters	0x03
+#define ReadInputRegisters	0x04
+#define WriteSingleCoil		0x05
+#define WriteSingleRegister	0x06
+#define WriteMultipleCoils	0x15
+#define WriteMultipleRegisters	0x16
 
 // Modbus Exception (Error) Codes
-#define IllegalFunction			0x01
-#define IllegalDataAddress		0x02
-#define IllegalDataValue		0x03
-#define SlaveDeviceFailure		0x04 // was called ServerDeviceFailure earlier
-#define IsWrong				0x80
+#define IllegalFunction		0x01
+#define IllegalDataAddress	0x02
+#define IllegalDataValue	0x03
+#define SlaveDeviceFailure	0x04 // was called ServerDeviceFailure earlier
+#define IsWrong			0x80
 
 // Variables for txToModbusRequestResponse()
 int SlaveAddress = 0x01;
@@ -209,48 +209,48 @@ const byte WorkingTemperatureRN = 0x13;		// = decimal 19
 // const int SoftwareVersionHiAP = 78;
 
 // ====================== Variables for live sensor readings ======================
-//Diagnostic					   [AP][AP]		[RN]	Array Position(AP) in SensorRxBuffer. Register Number(RN) for the position in the register.
-unsigned int zero_data;				// [32][33]		[3]	Value range 0-3500 pF. Should maximum be 6553.5 pF (65535)?
-unsigned int span_zero_data;			// [34][35]		[4]	Value range 0-3500 pF. Should maximum be 6553.5 pF (65535)?
-unsigned int actual_level_pct_int;		//			[0]
-unsigned int actual_measurement_pF;		//			[??]	same as pFmdlScaleForTool in HBLC_settings
-unsigned int valveOpeningDegree;		// [58]			[2]	Control Level pct of the valve opening degree (0-100%)
+//Diagnostic				   [AP][AP]		[RN]	Array Position(AP) in SensorRxBuffer. Register Number(RN) for the position in the register.
+unsigned int zero_data;			// [32][33]		[3]	Value range 0-3500 pF. Should maximum be 6553.5 pF (65535)?
+unsigned int span_zero_data;		// [34][35]		[4]	Value range 0-3500 pF. Should maximum be 6553.5 pF (65535)?
+unsigned int actual_level_pct_int;	//			[0]
+unsigned int actual_measurement_pF;	//			[??]	same as pFmdlScaleForTool in HBLC_settings
+unsigned int valveOpeningDegree;	// [58]			[2]	Control Level pct of the valve opening degree (0-100%)
 
 //Advanced settings
-unsigned int hi_lo_alarm;			// [18]			[20]	High = 1 Low = 0
-unsigned int Alarm_hysterese;			// [8]			[21]	in pct. Value range 0-100%
-unsigned int NO_NC_alarm;			// [13]			[22]	NC == 0 NO == 1
-unsigned int LP_HP_mode;			// [19]			[23]	LP == 0 HP == 1
-unsigned int SetAnalogOrDigitalOutput;		// [57]			[24]	Analog == 0 Digital == 1
-unsigned int AnalogDigitalAlarmSetting;		// [51]			[25]	??
-unsigned int AnalogDigitalHystSetting;		// [60]			[26]	??
-unsigned int led_shift;				// [25]			[27]	Is it the Alarm LED indication. Alarm LED = 0 Control LED = 1
-unsigned int Rampe_function;			// [41]			[28]	Ramp startup % in sec
-unsigned int Valve_filter;			// [43]			[29]	Valve speed open % in sec
-unsigned int ValveCloseFilter;			// [46]			[30]	Valve speed close % in sec
-unsigned int MinValveOpen;			// [50]			[31]	Minimum valve opening in %
-unsigned int MaxValveOpen;			// [52]			[32]	Maximum valve opening in %
-unsigned int SensorID;				// [1][2]		[33]	Sensor ID
+unsigned int hi_lo_alarm;		// [18]			[20]	High = 1 Low = 0
+unsigned int Alarm_hysterese;		// [8]			[21]	in pct. Value range 0-100%
+unsigned int NO_NC_alarm;		// [13]			[22]	NC == 0 NO == 1
+unsigned int LP_HP_mode;		// [19]			[23]	LP == 0 HP == 1
+unsigned int SetAnalogOrDigitalOutput;	// [57]			[24]	Analog == 0 Digital == 1
+unsigned int AnalogDigitalAlarmSetting;	// [51]			[25]	??
+unsigned int AnalogDigitalHystSetting;	// [60]			[26]	??
+unsigned int led_shift;			// [25]			[27]	Is it the Alarm LED indication. Alarm LED = 0 Control LED = 1
+unsigned int Rampe_function;		// [41]			[28]	Ramp startup % in sec
+unsigned int Valve_filter;		// [43]			[29]	Valve speed open % in sec
+unsigned int ValveCloseFilter;		// [46]			[30]	Valve speed close % in sec
+unsigned int MinValveOpen;		// [50]			[31]	Minimum valve opening in %
+unsigned int MaxValveOpen;		// [52]			[32]	Maximum valve opening in %
+unsigned int SensorID;			// [1][2]		[33]	Sensor ID
 
 // Basic settings
-unsigned int Control_level;			// [17]			[02]	Level = 0 Control = 1
-unsigned int Set_val;				// [5]			[06]	Setpoint level in % (0-100%)
-unsigned int P_band;				// [6]			[07]	P-band in % 0-100
+unsigned int Control_level;		// [17]			[02]	Level = 0 Control = 1
+unsigned int Set_val;			// [5]			[06]	Setpoint level in % (0-100%)
+unsigned int P_band;			// [6]			[07]	P-band in % 0-100
 
-unsigned int Filter_function;			// [11]			[8]		Filter time const. in second. 0-200.
-unsigned int Run_in;				// [16]			[9]		Run in signal. OFF == 0x00, ON == 0x01
-unsigned int Cal_function;			// [12]			[10]	(Zero & Span cal. function) OFF == 0, ON == 1
-unsigned int Alarm_setting;			// [7]			[11]	in pct. Value range 0-100%
-unsigned int AboveBelowAlarmSetting;		//			[1]		True == 1, False == 0
-unsigned int Alarm_delay;			// [9][10]		[12]	in seconds. Value range 0-600.
-unsigned int OffsetLength;			// [48][49]		[13]	??
-unsigned int OffsetMinimumLength;		// [53][54]		[14]	??
+unsigned int Filter_function;		// [11]			[8]		Filter time const. in second. 0-200.
+unsigned int Run_in;			// [16]			[9]		Run in signal. OFF == 0x00, ON == 0x01
+unsigned int Cal_function;		// [12]			[10]	(Zero & Span cal. function) OFF == 0, ON == 1
+unsigned int Alarm_setting;		// [7]			[11]	in pct. Value range 0-100%
+unsigned int AboveBelowAlarmSetting;	//			[1]		True == 1, False == 0
+unsigned int Alarm_delay;		// [9][10]		[12]	in seconds. Value range 0-600.
+unsigned int OffsetLength;		// [48][49]		[13]	??
+unsigned int OffsetMinimumLength;	// [53][54]		[14]	??
 
-unsigned int SensorType;			// [63]			[15]	same as mechanical type. Probe sensor = 0, Wire sensor = 1, Flex probe sensor = 2, HBLT-A2 probe = 3, HBLT-A2 Inch probe = 4, Wire sensor ver. W = 5
-unsigned int Refrigerant;			// [38]			[16]	NH3 == 0, CO2 == 1, OIL == 2, HFC R134a == 3, HFC R507 == 4, HFC R404A == 5, HFC R407C == 6, HFC R410A == 7, HFC R22 == 8, HFO R1234ZE == 9, HFO R1233ZD == 10
-unsigned int Measurement_length;		// [39][40]		[17]	same as Sensor Length.
-unsigned int StandPipe;				// [47]			[18]	DN25 1" == 0, DN32 1¼" == 1, DN40 1½" == 2, DN50 2" == 3, DN65 2½" == 4, DN80 3" == 5, DN100 4" == 6
-unsigned int WorkingTemperature;		// [55]			[19]	-60 - -40° == 0,  -40 - -30° == 1, -30 - -20° == 2, -20 - -10° == 3, -10 - 0° == 4, 0-10° == 5, 10-20° == 6, 20-30° == 6, 30-40° == 7, 40-50° == 8, 50-60° == 9, 60-70° == 10, 70-80° == 11, 80-90° == 12, 90-100° == 13
+unsigned int SensorType;		// [63]			[15]	same as mechanical type. Probe sensor = 0, Wire sensor = 1, Flex probe sensor = 2, HBLT-A2 probe = 3, HBLT-A2 Inch probe = 4, Wire sensor ver. W = 5
+unsigned int Refrigerant;		// [38]			[16]	NH3 == 0, CO2 == 1, OIL == 2, HFC R134a == 3, HFC R507 == 4, HFC R404A == 5, HFC R407C == 6, HFC R410A == 7, HFC R22 == 8, HFO R1234ZE == 9, HFO R1233ZD == 10
+unsigned int Measurement_length;	// [39][40]		[17]	same as Sensor Length.
+unsigned int StandPipe;			// [47]			[18]	DN25 1" == 0, DN32 1¼" == 1, DN40 1½" == 2, DN50 2" == 3, DN65 2½" == 4, DN80 3" == 5, DN100 4" == 6
+unsigned int WorkingTemperature;	// [55]			[19]	-60 - -40° == 0,  -40 - -30° == 1, -30 - -20° == 2, -20 - -10° == 3, -10 - 0° == 4, 0-10° == 5, 10-20° == 6, 20-30° == 6, 30-40° == 7, 40-50° == 8, 50-60° == 9, 60-70° == 10, 70-80° == 11, 80-90° == 12, 90-100° == 13
 
 // ================================================================================
 
@@ -364,19 +364,19 @@ void txToSensor(unsigned int SensorID, byte SensorSetting, unsigned int SensorSe
 	resetSensorRxBuffer();
 }
 
-bool approveMBCRC(int CRCLowByte)			// function to check receivedCRC with a calculated CRC of what is received
+bool approveMBCRC(int CRCLowByte)	// function to check receivedCRC with a calculated CRC of what is received
 {
 	int tempCalculatedCRC = ModRTU_CRC(MBrxBuffer, CRCLowByte);	// uses the function ModRTU_CRC to calculate the CRC based on first 6 bytes received
 	
-	int receivedCRC = (MBrxBuffer[CRCLowByte] << 8) + MBrxBuffer[CRCLowByte + 1];		// creates a variable of the CRCLowByte and add with the a CRC high byte
+	int receivedCRC = (MBrxBuffer[CRCLowByte] << 8) + MBrxBuffer[CRCLowByte + 1];	// creates a variable of the CRCLowByte and add with the a CRC high byte
 	
-	if(tempCalculatedCRC == receivedCRC)		// if tempCalculatedCRC is equal to receivedCRC
+	if(tempCalculatedCRC == receivedCRC)	// if tempCalculatedCRC is equal to receivedCRC
 	{
-		return true;				// return true
+		return true;	// return true
 	}
 	else
 	{
-		return false;				// return false
+		return false;	// return false
 	}
 }
 
