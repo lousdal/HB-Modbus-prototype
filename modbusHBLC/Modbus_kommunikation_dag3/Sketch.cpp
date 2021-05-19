@@ -588,7 +588,7 @@ void loop()
 	
 	if (currentTime - previousTime >= eventInterval)		// The constant eventInterval shows after how many milliseconds this if statement is true
 	{
-		resetSensorRxBuffer;
+		resetSensorRxBuffer();
 		requestHBLCsettings();
 		previousTime = currentTime;				// Update the timing for the next time around
 	}
