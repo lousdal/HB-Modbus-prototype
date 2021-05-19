@@ -56,13 +56,13 @@ uint16_t ModRTU_CRC(unsigned char buf[], int len);
 #define AnalogDigitalHystSettingDef	0x47	// Analog Digital Hyst Setting (define)
 //#define SensorTypeDef			0x4A	// Sensor Type - Should you be able to write to this one?
 
-#define rxPin PD7				// rxPin for SoftwareSerial // 11 or PD7 or just 7
-#define txPin PD7				// txPin for SoftwareSerial
+#define rxPin PD7		// rxPin for SoftwareSerial // 11 or PD7 or just 7
+#define txPin PD7		// txPin for SoftwareSerial
 
-#define RE PD2					// RE pin of the MAX485CSA+
-#define DE PD3					// DE pin of the MAX485CSA+
+#define RE PD2			// RE pin of the MAX485CSA+
+#define DE PD3			// DE pin of the MAX485CSA+
 
-#define heaterPin A5			// heaterPin
+#define heaterPin A5		// heaterPin
 
 #define MB_RX_BUFFER_SIZE 256	// Receiver buffer of 256 bytes
 #define S_RX_BUFFER_SIZE  256	// Receiver buffer of 256 bytes
@@ -189,24 +189,6 @@ const int StandPipeAP = 47;
 const byte StandPipeRN = 0x12;			// = decimal 18
 const int WorkingTemperatureAP = 55;
 const byte WorkingTemperatureRN = 0x13;		// = decimal 19
-// =============================================================================================================
-// const int SensorIDLoAP = 1;
-// const int SensorIDHiAP = 2;
-// const int payloadAP = 3;
-//
-// const int actTempAP = 31;
-// const int zeropFLoAP = 32;	// zero_pF_lo=zero_data
-// const int zeropFHiAP = 33;	// zero_pF_hi=zero_data>>8
-// const int spanpFLoAP = 34;	// span_pF_lo=span_zero_data
-// const int spanpFHiAP = 35;	// span_pF_hi=span_zero_data>>8
-// const int pFLoAP = 36;	// pF_lo=pF_mdl_scale_for_tool
-// const int pFHiAP = 37;	// pF_hi=pF_mdl_scale_for_tool>>8
-//
-// const int PerformTempRefAP = 29;
-// const int OffsetCalibrateAP = 42;
-// const int SoftwareVersionLo8AP = 80;
-// const int SoftwareVersionLo16AP = 79;
-// const int SoftwareVersionHiAP = 78;
 
 // ====================== Variables for live sensor readings ======================
 //Diagnostic				   [AP][AP]		[RN]	Array Position(AP) in SensorRxBuffer. Register Number(RN) for the position in the register.
