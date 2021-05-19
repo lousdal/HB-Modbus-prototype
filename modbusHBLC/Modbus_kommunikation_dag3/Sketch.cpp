@@ -3,7 +3,7 @@
 
 /*End of auto generated code by Atmel studio */
 
-#define F_CPU 16000000UL		// Either it doesn't affect the clock speed or it not set to use the extern crystal
+#define F_CPU 16000000UL
 
 #include <SoftwareSerial.h>
 #include <avr/io.h>
