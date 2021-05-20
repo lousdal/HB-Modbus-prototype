@@ -626,7 +626,7 @@ void loop()
 //					int startingAddress = MBrxBuffer[3];
 //					txToModbusRequestResponse(ReadHoldingRegisters, startingAddress);
 //				}
-				if(MBrxBuffer[5] == 0x01)
+				if((MBrxBuffer[2] == 0x00) && (MBrxBuffer[3] >= 0x00 || MBrxBuffer[3] <= 0x21) && (MBrxBuffer[4] == 0x00) && (MBrxBuffer[5] == 0x01))
 				{
 					int sensorRegisterNumber = MBrxBuffer[3];
 					txToModbusRequestResponse(ReadHoldingRegisters, sensorRegisterNumber);
@@ -646,7 +646,7 @@ void loop()
 //					txToModbusRequestResponse(ReadInputRegisters, startingAddress);
 //				}
 				
-				if(MBrxBuffer[5] == 0x01)
+				if((MBrxBuffer[2] == 0x00) && (MBrxBuffer[3] >= 0x00 || MBrxBuffer[3] <= 0x21) && (MBrxBuffer[4] == 0x00) && (MBrxBuffer[5] == 0x01))
 				{
 					int sensorRegisterNumber = MBrxBuffer[3];
 					txToModbusRequestResponse(ReadInputRegisters, sensorRegisterNumber);
