@@ -39,7 +39,7 @@ uint16_t ModRTU_CRC(unsigned char buf[], int len);
 #define HBLC_settings					0x21	// HBLC_setting with payload 0x01 return all the HBLC_settings. Register number 0x21
 #define ZeroCali						0x31	// Zero Calibration
 #define SpanCali						0x32	// Span Calibration
-//#define RefrigerantDef					0x34	// Refrigerant (define) - Should you be able to write to this one?
+//#define RefrigerantDef				0x34	// Refrigerant (define) - Should you be able to write to this one?
 #define MeasurementLength				0x35	// Measurement Length (same as Sensor Length)
 #define RampeFunction					0x36	// Rampe Function
 #define ValveFilter						0x38	// Valve Filter (Valve speed open % in second)
@@ -114,7 +114,7 @@ const unsigned long eventInterval = 1000;		// This constant is used to define th
 
 // Timer1 load and overflow counter
 //const int timer1_load = 56875;				// 16MHz / 256 = 62500 tics pr. second. 62500 - (62500 / 10) = 56250 tics the TCNT1 should be loaded with to overflow every 100 ms
-volatile uint8_t alarm_overflow;				// variable to store number of overflows. SHOULD IT BE uint16_t INSTEAD?
+/*volatile uint8_t alarm_overflow;*/				// variable to store number of overflows. SHOULD IT BE uint16_t INSTEAD?
 
 // ====================== HBLC_settings constants ArrayPosition(AP) & Register Number(RN) ======================
 // Diagnostic
@@ -189,24 +189,6 @@ const int StandPipeAP = 47;
 const byte StandPipeRN = 0x12;					// = decimal 18
 const int WorkingTemperatureAP = 55;
 const byte WorkingTemperatureRN = 0x13;			// = decimal 19
-// =============================================================================================================
-// const int SensorIDLoAP = 1;
-// const int SensorIDHiAP = 2;
-// const int payloadAP = 3;
-//
-// const int actTempAP = 31;
-// const int zeropFLoAP = 32;	// zero_pF_lo=zero_data
-// const int zeropFHiAP = 33;	// zero_pF_hi=zero_data>>8
-// const int spanpFLoAP = 34;	// span_pF_lo=span_zero_data
-// const int spanpFHiAP = 35;	// span_pF_hi=span_zero_data>>8
-// const int pFLoAP = 36;		// pF_lo=pF_mdl_scale_for_tool
-// const int pFHiAP = 37;		// pF_hi=pF_mdl_scale_for_tool>>8
-//
-// const int PerformTempRefAP = 29;
-// const int OffsetCalibrateAP = 42;
-// const int SoftwareVersionLo8AP = 80;
-// const int SoftwareVersionLo16AP = 79;
-// const int SoftwareVersionHiAP = 78;
 
 // ====================== Variables for live sensor readings ======================
 //Diagnostic							   [AP][AP]		[RN]	Array Position(AP) in SensorRxBuffer. Register Number(RN) for the position in the register.
@@ -577,7 +559,7 @@ void requestHBLCsettings()
 
 void setup()
 {
-	pinMode(rxPin, INPUT);		// define pin modes for tx, rx
+	pinMode(rxPin, INPUT);			// define pin modes for tx, rx
 	//DDRD |= (0 << rxPin);			// sets PD7 as input
 	
 	//DDRC |= (1 << 5);				// sets PC5 as output
@@ -597,7 +579,7 @@ void setup()
 	}
 	softwareSerial.begin(9600);		// Set data rate for the SoftwareSerial port
 	
-	//timer1_init();					// initialize timer1 settings
+	//timer1_init();				// initialize timer1 settings
 }
 
 void loop()
@@ -606,7 +588,7 @@ void loop()
 	
 	if (currentTime - previousTime >= eventInterval)	// The constant eventInterval shows after how many milliseconds this if statement is true
 	{
-		resetSensorRxBuffer;
+		resetSensorRxBuffer();
 		requestHBLCsettings();
 		previousTime = currentTime;						// Update the timing for the next time around
 	}
@@ -622,7 +604,7 @@ void loop()
 			MBrxWritePos = 0;
 		}
 		
-		if(MBrxBuffer[0] == 0x00 || MBrxBuffer[2] != 0x00)
+		if(MBrxBuffer[0] == 0x00 || MBrxBuffer[2] != 0x00)	// Sometimes there is 0x00 on position 0 and 2 i the MBrxBuffer. Then the resetMBrxBuffer needs to be reset in order to not destroy the communication.
 		{
 			resetMBrxBuffer();
 		}
@@ -638,6 +620,12 @@ void loop()
 // 					txToSensor(HBLC_ID, HBLC_settings, (int)((MBrxBuffer[4] << 8) + MBrxBuffer[5]));
 // 					resetMBrxBuffer();
 // 				}
+				if((MBrxBuffer[5] > 0x01) && (MBrxBuffer[5] <= 0x21))
+				{
+					quantityOfRegisters = MBrxBuffer[5];
+					int startingAddress = MBrxBuffer[3];
+					txToModbusRequestResponse(ReadHoldingRegisters, startingAddress);
+				}
 				if(MBrxBuffer[5] == 0x01)
 				{
 					int sensorRegisterNumber = MBrxBuffer[3];
@@ -658,7 +646,7 @@ void loop()
 					txToModbusRequestResponse(ReadInputRegisters, startingAddress);
 				}
 				
-				if((MBrxBuffer[5] == 0x01) && (MBrxBuffer[5] <= 0x21))
+				if(MBrxBuffer[5] == 0x01)
 				{
 					int sensorRegisterNumber = MBrxBuffer[3];
 					txToModbusRequestResponse(ReadInputRegisters, sensorRegisterNumber);
@@ -666,7 +654,7 @@ void loop()
 				}
 				else
 				{
-					txToModbusRequestErrorResponse((ReadHoldingRegisters + IsWrong), IllegalDataAddress);	// IsWrong = 0x80, IllegalDataAddress = 0x02
+					txToModbusRequestErrorResponse((ReadInputRegisters + IsWrong), IllegalDataAddress);	// IsWrong = 0x80, IllegalDataAddress = 0x02
 				}
 			}
 			
