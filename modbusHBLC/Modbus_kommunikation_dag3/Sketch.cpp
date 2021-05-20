@@ -113,8 +113,8 @@ unsigned long previousTime = 0;
 const unsigned long eventInterval = 1000;		// This constant is used to define the interval of how often HBLC_settings will be requested
 
 // Timer1 load and overflow counter
-// const int timer1_load = 56875;				// 16MHz / 256 = 62500 tics pr. second. 62500 - (62500 / 10) = 56250 tics the TCNT1 should be loaded with to overflow every 100 ms
-// volatile uint8_t alarm_overflow;				// variable to store number of overflows. SHOULD IT BE uint16_t INSTEAD?
+// const int timer1_load = 56875;			// 16MHz / 256 = 62500 tics pr. second. 62500 - (62500 / 10) = 56250 tics the TCNT1 should be loaded with to overflow every 100 ms
+// volatile uint8_t alarm_overflow;			// variable to store number of overflows. SHOULD IT BE uint16_t INSTEAD?
 
 // ====================== HBLC_settings constants ArrayPosition(AP) & Register Number(RN) ======================
 // Diagnostic
