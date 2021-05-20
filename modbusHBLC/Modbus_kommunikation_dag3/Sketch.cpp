@@ -979,7 +979,7 @@ void loop()
 			SensorRxBuffer[SensorRxWritePos++] = softwareSerial.read();		// Read the softwareSerial and put into the SensorRxBuffer and increment the SensorRxWritePos
 			if(SensorRxBuffer[0] == 0x00)						// Sometimes the SensorRxBuffer starts with 0x00 instead of 0x02 (STX from sensor). This if statement is to avoid that.
 			{
-				SensorRxWritePos--;
+				resetSensorRxBuffer();
 			}
 		}
 		else
