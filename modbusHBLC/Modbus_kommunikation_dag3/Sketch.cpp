@@ -113,8 +113,8 @@ unsigned long previousTime = 0;
 const unsigned long eventInterval = 1000;		// This constant is used to define the interval of how often HBLC_settings will be requested
 
 // Timer1 load and overflow counter
-//const int timer1_load = 56875;				// 16MHz / 256 = 62500 tics pr. second. 62500 - (62500 / 10) = 56250 tics the TCNT1 should be loaded with to overflow every 100 ms
-/*volatile uint8_t alarm_overflow;*/				// variable to store number of overflows. SHOULD IT BE uint16_t INSTEAD?
+// const int timer1_load = 56875;				// 16MHz / 256 = 62500 tics pr. second. 62500 - (62500 / 10) = 56250 tics the TCNT1 should be loaded with to overflow every 100 ms
+// volatile uint8_t alarm_overflow;				// variable to store number of overflows. SHOULD IT BE uint16_t INSTEAD?
 
 // ====================== HBLC_settings constants ArrayPosition(AP) & Register Number(RN) ======================
 // Diagnostic
@@ -191,14 +191,14 @@ const int WorkingTemperatureAP = 55;
 const byte WorkingTemperatureRN = 0x13;			// = decimal 19
 
 // ====================== Variables for live sensor readings ======================
-//Diagnostic							   [AP][AP]		[RN]	Array Position(AP) in SensorRxBuffer. Register Number(RN) for the position in the register.
+// Diagnostic							   [AP][AP]		[RN]	Array Position(AP) in SensorRxBuffer. Register Number(RN) for the position in the register.
 unsigned int zero_data;					// [32][33]		[3]		Value range 0-3500 pF. Should maximum be 6553.5 pF (65535)?
 unsigned int span_zero_data;			// [34][35]		[4]		Value range 0-3500 pF. Should maximum be 6553.5 pF (65535)?
 unsigned int actual_level_pct_int;		//				[0]
 unsigned int actual_measurement_pF;		//				[??]	same as pFmdlScaleForTool in HBLC_settings
 unsigned int valveOpeningDegree;		// [58]			[2]		Control Level pct of the valve opening degree (0-100%)
 
-//Advanced settings
+// Advanced settings
 unsigned int hi_lo_alarm;				// [18]			[20]	High = 1 Low = 0
 unsigned int Alarm_hysterese;			// [8]			[21]	in pct. Value range 0-100%
 unsigned int NO_NC_alarm;				// [13]			[22]	NC == 0 NO == 1
