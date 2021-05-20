@@ -620,12 +620,12 @@ void loop()
 // 					txToSensor(HBLC_ID, HBLC_settings, (int)((MBrxBuffer[4] << 8) + MBrxBuffer[5]));
 // 					resetMBrxBuffer();
 // 				}
-				if((MBrxBuffer[5] > 0x01) && (MBrxBuffer[5] <= 0x21))
-				{
-					quantityOfRegisters = MBrxBuffer[5];
-					int startingAddress = MBrxBuffer[3];
-					txToModbusRequestResponse(ReadHoldingRegisters, startingAddress);
-				}
+//				if((MBrxBuffer[5] > 0x01) && (MBrxBuffer[5] <= 0x21))	// if-statement to read multiple ReadHoldingRegisters
+//				{
+//					quantityOfRegisters = MBrxBuffer[5];
+//					int startingAddress = MBrxBuffer[3];
+//					txToModbusRequestResponse(ReadHoldingRegisters, startingAddress);
+//				}
 				if(MBrxBuffer[5] == 0x01)
 				{
 					int sensorRegisterNumber = MBrxBuffer[3];
@@ -639,12 +639,12 @@ void loop()
 			}
 			else if(MBrxBuffer[1] == ReadInputRegisters)
 			{
-				if((MBrxBuffer[5] > 0x01) && (MBrxBuffer[5] <= 0x21))
-				{
-					quantityOfRegisters = MBrxBuffer[5];
-					int startingAddress = MBrxBuffer[3];
-					txToModbusRequestResponse(ReadInputRegisters, startingAddress);
-				}
+//				if((MBrxBuffer[5] > 0x01) && (MBrxBuffer[5] <= 0x21))	// if-statement to read multiple ReadInputRegisters
+//				{
+//					quantityOfRegisters = MBrxBuffer[5];
+//					int startingAddress = MBrxBuffer[3];
+//					txToModbusRequestResponse(ReadInputRegisters, startingAddress);
+//				}
 				
 				if(MBrxBuffer[5] == 0x01)
 				{
